@@ -1,0 +1,107 @@
+:root {
+  --roxo_ekk: #5355a0;
+  --destaques_e_btns: #6e54ff;
+  --textos: #324147;
+  --linhas_e_infos: #c8c9e0;
+  --verde: #2ac769;
+  --vermelho: #ff2929;
+  --amarelo: #ffc30b;
+  --claro_linhas: #ddd7e5;
+  --azul: #109cf1;
+  --laranja_ekk: #f26a5f;
+  --cinza_ekk: #f6f7fb;
+  --branco: #ffffff;
+  --tom_suave: #7c7eb7;
+  --bg_btns_icones: #f2f3f5;
+  --degrade_ekk: #5355a0;
+  --cinza_icones: #4f6872;
+  --infos_inativas_bgs_brancos: #b1aabb;
+  --laranja: #ff7c33;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--cinza_ekk) !important;
+  color: var(--textos) !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 34%;
+}
+
+a,
+button,
+form,
+select,
+input {
+  outline: none;
+}
+
+body,
+input,
+textarea,
+span,
+a,
+p,
+li,
+button {
+  font-family: Roboto, Arial, Helvetica, sans-serif !important;
+}
+
+button,
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--title-color);
+  font-weight: 300;
+  font-family: Roboto !important;
+}
+
+/* Extra small devices (portrait phones, less than 576px)
+   No media query since this is the default in Bootstrap */
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  html {
+    font-size: 42%;
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  html {
+    font-size: 62.5%;
+    /*1rem = 10px */
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+  html {
+    font-size: 65%;
+  }
+}
+
+/* usar tudo em rem */
