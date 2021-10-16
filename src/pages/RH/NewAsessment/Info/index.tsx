@@ -3,6 +3,7 @@ import { Avatar } from "@material-ui/core";
 import PageTitle from "../../../../components/PageTitle";
 import Paper from "../../../../components/Paper";
 import Title from "../../../../components/Title";
+import Input from "../../../../components/Input"
 import InputLabel from "../../../../components/InputLabel";
 import DatePicker from "../../../../components/DatePicker";
 import Dropdown from "../../../../components/Dropdown";
@@ -17,7 +18,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "../../../../components/Accordion";
-
+import { Form } from "@unform/web";
 import * as S from "./styles";
 
 const AsessmentInfo = () => {
@@ -30,12 +31,19 @@ const AsessmentInfo = () => {
       <S.Grid>
         <Paper containerStyle={{ flexDirection: "column" }}>
           <Title>DEFINIÇÕES</Title>
-
           <S.HStack>
+            <Form
+              onSubmit={() => {}}
+              style={{ display: "flex", flexDirection: "column" }}
+            >
             <div>
               <InputLabel htmlFor="assessment-name">Defina um nome</InputLabel>
-              {/* <Input name="assessment-name" /> */}
+              <Input
+                name="assessment-name"
+                placeholder="Nome"
+                id="name" />
             </div>
+            </Form>
             <div>
               <InputLabel>Selecione um Tipo</InputLabel>
 
@@ -85,6 +93,12 @@ const AsessmentInfo = () => {
               <div>
                 <InputLabel>Selecione um item</InputLabel>
                 <Dropdown placeholder="Selecione filtro" fullRounded={false}>
+                  <DropdownItem></DropdownItem>
+                </Dropdown>
+              </div>
+              <div>
+                <InputLabel>Selecione um detalhamento</InputLabel>
+                <Dropdown placeholder="Selecione det" fullRounded={false}>
                   <DropdownItem></DropdownItem>
                 </Dropdown>
               </div>
