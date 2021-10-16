@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { shade } from "polished";
+import styled from 'styled-components';
+import { shade } from 'polished';
 
-import { ReactComponent as TrashSVG } from "../../../../assets/icons/trash.svg";
+import { ReactComponent as TrashSVG } from '../../../../assets/icons/trash.svg';
 
 export const Grid = styled.div`
   display: grid;
@@ -61,7 +61,7 @@ export const Delete = styled(TrashSVG)`
   margin-right: 0.8rem;
 
   &:hover {
-    background: ${shade(0.1, "#f2f3f5")};
+    background: ${shade(0.1, '#f2f3f5')};
   }
 `;
 

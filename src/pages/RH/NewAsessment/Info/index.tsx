@@ -74,46 +74,46 @@ const AsessmentInfo = () => {
         </Paper>
         <Paper containerStyle={{ flexDirection: 'column' }}>
           <Title>PARTICIPANTES</Title>
-          <div>
-            <S.HStack style={{ width: 'max-content' }}>
-              <div>
-                <InputLabel>Selecione um CNPJ</InputLabel>
-                <Dropdown placeholder="Selecionar" fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Filtrar por</InputLabel>
-                <Dropdown placeholder="Selecionar" fullRounded={false}>
-                  <DropdownItem>Equipe</DropdownItem>
-                  <DropdownItem>Cargo</DropdownItem>
-                  <DropdownItem>Estrutura</DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Item</InputLabel>
-                <Dropdown placeholder="Selecionar" fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Detalhamento</InputLabel>
-                <Dropdown placeholder="Selecionar" fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Incluir hierarquia?</InputLabel>
-                <Dropdown placeholder="Selecionar" fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <Button containerStyle={{ marginLeft: 'auto' }} width="15rem">
-                  ADICIONAR
-                </Button>
-              </div>
-            </S.HStack>
+          <div style={{ display: 'flex' }}>
+            <div>
+              <S.HStack style={{ width: 'max-content' }}>
+                <div>
+                  <InputLabel>Selecione um CNPJ</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem></DropdownItem>
+                  </Dropdown>
+                </div>
+                <div>
+                  <InputLabel>Filtrar por</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem>Equipe</DropdownItem>
+                    <DropdownItem>Cargo</DropdownItem>
+                    <DropdownItem>Estrutura</DropdownItem>
+                  </Dropdown>
+                </div>
+                <div>
+                  <InputLabel>Detalhamento</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem></DropdownItem>
+                  </Dropdown>
+                </div>
+                <div>
+                  <InputLabel>Incluir hierarquia?</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem></DropdownItem>
+                  </Dropdown>
+                </div>
+              </S.HStack>
+            </div>
+            <Button
+              containerStyle={{
+                marginLeft: 'auto',
+                marginTop: 'auto',
+              }}
+              width="15rem"
+            >
+              ADICIONAR
+            </Button>
           </div>
 
           <S.MembersTable>
