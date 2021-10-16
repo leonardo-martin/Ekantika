@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { ReactComponent as PlusIconSVG } from "../../../../assets/icons/plus.svg";
+import styled from 'styled-components';
+import { ReactComponent as PlusIconSVG } from '../../../../assets/icons/plus.svg';
+import { Switch as MUISwitch } from '@material-ui/core';
 
 export const Grid = styled.div`
   display: grid;
@@ -65,5 +66,28 @@ export const PlusIcon = styled(PlusIconSVG)`
 
   path {
     stroke: var(--branco);
+  }
+`;
+
+export const Answer = styled.div`
+  background: #f2f3f5;
+  padding: 3rem;
+  margin: 3rem 0;
+  border-radius: 15px;
+`;
+
+export const AnswerSubtitle = styled.h3`
+  font-weight: bold;
+  font-size: 15px;
+  color: #324147;
+  margin-bottom: 1rem;
+`;
+
+export const Switch = styled(MUISwitch)`
+  .MuiSwitch-colorPrimary.Mui-checked {
+    color: #6e54ff;
+  }
+  span.MuiSwitch-track {
+    background-color: #6e54ff !important;
   }
 `;

@@ -1,15 +1,14 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect } from 'react';
 
-import { Form } from "@unform/web";
-import { Grid } from "@material-ui/core";
+import { Grid } from '@material-ui/core';
 
-import Button from "../../../../../components/Button";
-import Modal from "../../../../../components/Modal";
-import Table from "../../../../../components/Table";
-import Textarea from "../../../../../components/Textarea";
-import Input from "../../../../../components/Input";
+import Button from '../../../../../components/Button';
+import Modal from '../../../../../components/Modal';
+import Table from '../../../../../components/Table';
+import Textarea from '../../../../../components/Textarea';
+import Input from '../../../../../components/Input';
 
-import TablePaginationActions from "../../../../../components/Table/components/TablePaginationActions";
+import TablePaginationActions from '../../../../../components/Table/components/TablePaginationActions';
 
 import {
   Container,
@@ -23,13 +22,13 @@ import {
   Switch,
   TablePagination,
   ModalDescription,
-} from "./styles";
-import LoadingScreen from "../../../../../components/LoadingScreen";
+} from './styles';
+import LoadingScreen from '../../../../../components/LoadingScreen';
 // import { useHistory } from "react-router";
-import { useToast } from "../../../../../contexts/ToastContext";
-import api from "../../../../../services/api";
-import onlyNumbers from "../../../../../utils/onlyNumbers";
-
+import { useToast } from '../../../../../contexts/ToastContext';
+import api from '../../../../../services/api';
+import onlyNumbers from '../../../../../utils/onlyNumbers';
+import { Form } from '@unform/web';
 interface newElementProps {
   max: string;
   min: string;
@@ -90,17 +89,17 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
-        accessor: "id",
-        width: "10%",
+        Header: 'ID',
+        accessor: 'id',
+        width: '10%',
       },
       {
-        Header: "TEMA",
-        accessor: "theme",
+        Header: 'TEMA',
+        accessor: 'theme',
       },
       {
-        Header: " ",
-        accessor: "edit_remove",
+        Header: ' ',
+        accessor: 'edit_remove',
       },
     ],
     []
@@ -114,7 +113,7 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
   }, [reloadTab]);
 
   async function loadElements() {
-    const response = await api.post("exame/list", {
+    const response = await api.post('exame/list', {
       category_id: performanceId,
     });
 
@@ -193,24 +192,24 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
   ]);
 
   const handleExcludeRole = useCallback(async () => {
-    const response = await api.post("exame/delete", {
+    const response = await api.post('exame/delete', {
       exame_id: selectedElementToDelete.id,
     });
 
     if (!response.data.success) {
       addToast({
-        type: "error",
-        title: "Erro",
+        type: 'error',
+        title: 'Erro',
         description:
-          "Ocorreu um erro ao excluir este elemento, contate o suporte para mais informações.",
+          'Ocorreu um erro ao excluir este elemento, contate o suporte para mais informações.',
       });
 
       return;
     } else {
       addToast({
-        type: "success",
-        title: "Sucesso",
-        description: "Elemento foi deletado com sucesso.",
+        type: 'success',
+        title: 'Sucesso',
+        description: 'Elemento foi deletado com sucesso.',
       });
 
       let newRoleState = elements.filter(
@@ -239,14 +238,14 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
         description: data.theme,
         length_mix: data.min,
         length_max: data.max,
-        parent_id: "",
+        parent_id: '',
       };
 
       let err = false;
-      let description = "";
+      let description = '';
 
       if (!formData.description || formData.description.length === 0) {
-        description = "O tema não pode ser nulo.";
+        description = 'O tema não pode ser nulo.';
         err = true;
       }
 
@@ -256,16 +255,16 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
         formData.length_mix > formData.length_max
       ) {
         description =
-          "Número mínimo de caracteres não pode ser maior do que o número máximo.";
+          'Número mínimo de caracteres não pode ser maior do que o número máximo.';
         err = true;
       }
 
       if (!formData.length_mix || formData.length_mix.length === 0) {
-        description = "Número mínimo de caracteres não pode ser nulo.";
+        description = 'Número mínimo de caracteres não pode ser nulo.';
         err = true;
       }
       if (!formData.length_max || formData.length_max.length === 0) {
-        description = "Número máximo de caracteres não pode ser nulo.";
+        description = 'Número máximo de caracteres não pode ser nulo.';
         err = true;
       }
 
@@ -273,29 +272,29 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
 
       if (err) {
         addToast({
-          type: "error",
-          title: "Erro",
+          type: 'error',
+          title: 'Erro',
           description,
         });
         return;
       }
 
-      const response = await api.post("exame/update", formData);
+      const response = await api.post('exame/update', formData);
       console.log(response.data);
 
       if (!response.data.success) {
         addToast({
-          type: "error",
-          title: "Erro ao Editar",
+          type: 'error',
+          title: 'Erro ao Editar',
           description:
-            "Ocorreu um erro ao editar o elemento, contate o suporte para mais informações.",
+            'Ocorreu um erro ao editar o elemento, contate o suporte para mais informações.',
         });
         return;
       } else {
         addToast({
-          type: "success",
-          title: "Sucesso",
-          description: "Elemento editado com sucesso.",
+          type: 'success',
+          title: 'Sucesso',
+          description: 'Elemento editado com sucesso.',
         });
 
         // setElements((prevState) =>
@@ -333,16 +332,16 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
         justiry_required: selectedElement.justiry_required,
         category_id: performanceId,
         typeid: selectedElement.type_id,
-        parent_id: "",
+        parent_id: '',
       };
 
       console.log(formData);
 
       let err = false;
-      let description = "";
+      let description = '';
 
       if (!formData.description || formData.description.length === 0) {
-        description = "O tema não pode ser nulo.";
+        description = 'O tema não pode ser nulo.';
         err = true;
       }
 
@@ -352,44 +351,44 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
         formData.length_mix > formData.length_max
       ) {
         description =
-          "Número mínimo de caracteres não pode ser maior do que o número máximo.";
+          'Número mínimo de caracteres não pode ser maior do que o número máximo.';
         err = true;
       }
 
       if (!formData.length_mix || formData.length_mix.length === 0) {
-        description = "Número mínimo de caracteres não pode ser nulo.";
+        description = 'Número mínimo de caracteres não pode ser nulo.';
         err = true;
       }
       if (!formData.length_max || formData.length_max.length === 0) {
-        description = "Número máximo de caracteres não pode ser nulo.";
+        description = 'Número máximo de caracteres não pode ser nulo.';
         err = true;
       }
 
       if (err) {
         addToast({
-          type: "error",
-          title: "Erro",
+          type: 'error',
+          title: 'Erro',
           description,
         });
         return;
       }
 
-      const response = await api.post("exame", formData);
+      const response = await api.post('exame', formData);
       console.log(response.data);
 
       if (!response.data.success) {
         addToast({
-          type: "error",
-          title: "Erro ao Salvar",
+          type: 'error',
+          title: 'Erro ao Salvar',
           description:
-            "Ocorreu um erro ao cadastrar um novo elemento, contate o suporte para mais informações.",
+            'Ocorreu um erro ao cadastrar um novo elemento, contate o suporte para mais informações.',
         });
         return;
       } else {
         addToast({
-          type: "success",
-          title: "Sucesso",
-          description: "Um novo elemento foi cadastrado no sistema.",
+          type: 'success',
+          title: 'Sucesso',
+          description: 'Um novo elemento foi cadastrado no sistema.',
         });
 
         //setRoles((prevState) => [...prevState, { ...response.data.payload }]);
@@ -422,21 +421,21 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
       const { value, id } = e.target;
 
       setSelectedElement((prevState) => {
-        if (id === "min") {
+        if (id === 'min') {
           return {
             ...prevState,
             length_mix: onlyNumbers(value),
           };
         }
 
-        if (id === "max") {
+        if (id === 'max') {
           return {
             ...prevState,
             length_max: onlyNumbers(value),
           };
         }
 
-        if (id === "theme") {
+        if (id === 'theme') {
           return {
             ...prevState,
             description: value,
@@ -468,7 +467,7 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
           <Button
             type="button"
             width="20rem"
-            style={{ marginLeft: "1rem" }}
+            style={{ marginLeft: '1rem' }}
             onClick={() => {
               setOpenAddElementModal(true);
               setSelectedElement({} as ElementProps);
@@ -483,7 +482,7 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
         <ModalContainer>
           <Form
             onSubmit={handleAddElementSubmit}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: 'flex', flexDirection: 'column' }}
           >
             <ModalTitle>Adicionar elemento de desempenho</ModalTitle>
 
@@ -493,12 +492,12 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
               value={selectedElement.description}
               onChange={handleInputChange}
               containerStyle={{
-                width: "100%",
-                margin: "3rem 0",
-                background: "#F2F3F5",
+                width: '100%',
+                margin: '3rem 0',
+                background: '#F2F3F5',
               }}
               textareaStyle={{
-                height: "10rem",
+                height: '10rem',
               }}
               placeholder="Tema"
             />
@@ -510,13 +509,13 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
                 <Switch
                   color="primary"
                   checked={
-                    selectedElement.justify_answer === "1" ? true : false
+                    selectedElement.justify_answer === '1' ? true : false
                   }
                   onChange={() => {
                     setSelectedElement((prevState) => ({
                       ...prevState,
                       justify_answer:
-                        selectedElement.justify_answer === "1" ? "0" : "1",
+                        selectedElement.justify_answer === '1' ? '0' : '1',
                     }));
                   }}
                 />
@@ -526,24 +525,24 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
                 <Switch
                   color="primary"
                   checked={
-                    selectedElement.justiry_required === "1" ? true : false
+                    selectedElement.justiry_required === '1' ? true : false
                   }
                   onChange={() => {
                     setSelectedElement((prevState) => ({
                       ...prevState,
                       justiry_required:
-                        selectedElement.justiry_required === "1" ? "0" : "1",
+                        selectedElement.justiry_required === '1' ? '0' : '1',
                     }));
                   }}
                 />
               </Grid>
               <Grid item xs={4}>
                 <ModalSubtitle>Caracteres</ModalSubtitle>
-                <div style={{ display: "flex" }}>
+                <Form onSubmit={() => {}} style={{ display: 'flex' }}>
                   <Input
                     name="min"
                     id="min"
-                    containerStyle={{ width: "45rem", marginTop: "2rem" }}
+                    containerStyle={{ width: '45rem', marginTop: '2rem' }}
                     placeholder="Mín."
                     value={selectedElement.length_mix}
                     onChange={handleInputChange}
@@ -552,22 +551,22 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
                     name="max"
                     id="max"
                     containerStyle={{
-                      width: "45rem",
-                      marginTop: "2rem",
-                      marginLeft: "1rem",
+                      width: '45rem',
+                      marginTop: '2rem',
+                      marginLeft: '1rem',
                     }}
                     placeholder="Máx"
                     value={selectedElement.length_max}
                     onChange={handleInputChange}
                   />
-                </div>
+                </Form>
               </Grid>
             </Grid>
 
             <Button
               width="20rem"
               type="submit"
-              containerStyle={{ marginTop: "3rem", marginLeft: "auto" }}
+              containerStyle={{ marginTop: '3rem', marginLeft: 'auto' }}
             >
               SALVAR
             </Button>
@@ -579,7 +578,7 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
         <ModalContainer>
           <Form
             onSubmit={handleEditElementSubmit}
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{ display: 'flex', flexDirection: 'column' }}
           >
             <ModalTitle>Editar elemento de desempenho</ModalTitle>
 
@@ -587,12 +586,12 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
               name="theme"
               id="theme"
               containerStyle={{
-                width: "100%",
-                margin: "3rem 0",
-                background: "#F2F3F5",
+                width: '100%',
+                margin: '3rem 0',
+                background: '#F2F3F5',
               }}
               textareaStyle={{
-                height: "10rem",
+                height: '10rem',
               }}
               placeholder="Tema"
               value={selectedElement.description}
@@ -606,13 +605,13 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
                 <Switch
                   color="primary"
                   checked={
-                    selectedElement.justify_answer === "1" ? true : false
+                    selectedElement.justify_answer === '1' ? true : false
                   }
                   onChange={() => {
                     setSelectedElement((prevState) => ({
                       ...prevState,
                       justify_answer:
-                        selectedElement.justify_answer === "1" ? "0" : "1",
+                        selectedElement.justify_answer === '1' ? '0' : '1',
                     }));
                   }}
                 />
@@ -622,24 +621,24 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
                 <Switch
                   color="primary"
                   checked={
-                    selectedElement.justiry_required === "1" ? true : false
+                    selectedElement.justiry_required === '1' ? true : false
                   }
                   onChange={() => {
                     setSelectedElement((prevState) => ({
                       ...prevState,
                       justiry_required:
-                        selectedElement.justiry_required === "1" ? "0" : "1",
+                        selectedElement.justiry_required === '1' ? '0' : '1',
                     }));
                   }}
                 />
               </Grid>
               <Grid item xs={4}>
                 <ModalSubtitle>Caracteres</ModalSubtitle>
-                <div style={{ display: "flex" }}>
+                <div style={{ display: 'flex' }}>
                   <Input
                     name="min"
                     id="min"
-                    containerStyle={{ width: "45rem", marginTop: "2rem" }}
+                    containerStyle={{ width: '45rem', marginTop: '2rem' }}
                     placeholder="Mín."
                     value={selectedElement.length_mix}
                     onChange={handleInputChange}
@@ -648,9 +647,9 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
                     name="max"
                     id="max"
                     containerStyle={{
-                      width: "45rem",
-                      marginTop: "2rem",
-                      marginLeft: "1rem",
+                      width: '45rem',
+                      marginTop: '2rem',
+                      marginLeft: '1rem',
                     }}
                     placeholder="Máx"
                     value={selectedElement.length_max}
@@ -663,7 +662,7 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
             <Button
               width="20rem"
               type="submit"
-              containerStyle={{ marginTop: "3rem", marginLeft: "auto" }}
+              containerStyle={{ marginTop: '3rem', marginLeft: 'auto' }}
             >
               SALVAR
             </Button>
@@ -683,10 +682,10 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
 
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%',
             }}
           >
             <Button
@@ -694,13 +693,13 @@ const Performance: React.FC<PerformanceProps> = ({ setPerformanceData }) => {
               btnColor="#FF2929"
               outline
               onClick={handleExcludeRole}
-              containerStyle={{ marginRight: "1.5rem", minWidth: "23rem" }}
+              containerStyle={{ marginRight: '1.5rem', minWidth: '23rem' }}
             >
               CONFIRMAR EXCLUSÃO
             </Button>
             <Button
               type="button"
-              containerStyle={{ minWidth: "23rem" }}
+              containerStyle={{ minWidth: '23rem' }}
               onClick={() => setOpenExcludeElementModal(false)}
             >
               CANCELAR
