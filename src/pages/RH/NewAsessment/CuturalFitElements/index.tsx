@@ -6,6 +6,7 @@ import Button from '../../../../components/Button';
 import Title from '../../../../components/Title';
 import Navigation from '../Navigation';
 import Input from '../../../../components/Input';
+import { Form } from "@unform/web";
 
 import { Grid } from '@material-ui/core';
 
@@ -49,68 +50,70 @@ const CuturalFitElements = () => {
             <Button width="15rem">NOVO ELEMENTO</Button>
           </S.SpaceBetween>
 
-          {/* <S.NoElement>Você ainda não adicionou nenhum elemento</S.NoElement> */}
-          <S.Answer>
-            <Grid container>
-              <Grid item xs={3}>
-                <S.AnswerSubtitle>Justificar resposta?</S.AnswerSubtitle>
+            {/* <S.NoElement>Você ainda não adicionou nenhum elemento</S.NoElement> */}
+          <Form onSubmit={() => {}} style={{ display: 'flex' }}>
+            <S.Answer>
+              <Grid container>
+                <Grid item xs={3}>
+                  <S.AnswerSubtitle>Justificar resposta?</S.AnswerSubtitle>
 
-                <S.Switch
-                  color="primary"
-                  checked={
-                    selectedElement.justify_answer === '1' ? true : false
-                  }
-                  onChange={() => {
-                    setSelectedElement((prevState) => ({
-                      ...prevState,
-                      justify_answer:
-                        selectedElement.justify_answer === '1' ? '0' : '1',
-                    }));
-                  }}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <S.AnswerSubtitle>Obrigatória?</S.AnswerSubtitle>
-
-                <S.Switch
-                  color="primary"
-                  checked={
-                    selectedElement.justify_answer === '1' ? true : false
-                  }
-                  onChange={() => {
-                    setSelectedElement((prevState) => ({
-                      ...prevState,
-                      justify_answer:
-                        selectedElement.justify_answer === '1' ? '0' : '1',
-                    }));
-                  }}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <S.AnswerSubtitle>Caracteres</S.AnswerSubtitle>
-                <div style={{ display: 'flex' }}>
-                  <Input
-                    name="min"
-                    id="min"
-                    containerStyle={{ width: '45rem', marginTop: '2rem' }}
-                    placeholder="Mín."
-                    value={selectedElement.length_mix}
-                  />
-                  <Input
-                    name="max"
-                    id="max"
-                    containerStyle={{
-                      width: '45rem',
-                      marginTop: '2rem',
-                      marginLeft: '1rem',
+                  <S.Switch
+                    color="primary"
+                    checked={
+                      selectedElement.justify_answer === '1' ? true : false
+                    }
+                    onChange={() => {
+                      setSelectedElement((prevState) => ({
+                        ...prevState,
+                        justify_answer:
+                          selectedElement.justify_answer === '1' ? '0' : '1',
+                      }));
                     }}
-                    placeholder="Máx"
-                    value={selectedElement.length_max}
                   />
-                </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <S.AnswerSubtitle>Obrigatória?</S.AnswerSubtitle>
+
+                  <S.Switch
+                    color="primary"
+                    checked={
+                      selectedElement.justify_answer === '1' ? true : false
+                    }
+                    onChange={() => {
+                      setSelectedElement((prevState) => ({
+                        ...prevState,
+                        justify_answer:
+                          selectedElement.justify_answer === '1' ? '0' : '1',
+                      }));
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <S.AnswerSubtitle>Caracteres</S.AnswerSubtitle>
+                  <div style={{ display: 'flex' }}>
+                    <Input
+                      name="min"
+                      id="min"
+                      containerStyle={{ width: '45rem', marginTop: '2rem' }}
+                      placeholder="Mín."
+                      value={selectedElement.length_mix}
+                    />
+                    <Input
+                      name="max"
+                      id="max"
+                      containerStyle={{
+                        width: '45rem',
+                        marginTop: '2rem',
+                        marginLeft: '1rem',
+                      }}
+                      placeholder="Máx"
+                      value={selectedElement.length_max}
+                    />
+                  </div>
+                </Grid>
               </Grid>
-            </Grid>
-          </S.Answer>
+            </S.Answer>
+          </Form>
         </Paper>
         <Paper containerStyle={{ flexDirection: 'column' }}>
           <Title>Biblioteca de elementos</Title>
