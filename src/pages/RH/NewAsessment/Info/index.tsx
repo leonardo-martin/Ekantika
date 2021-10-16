@@ -1,25 +1,26 @@
-import { Avatar } from "@material-ui/core";
+import { Avatar } from '@material-ui/core';
 
-import PageTitle from "../../../../components/PageTitle";
-import Paper from "../../../../components/Paper";
-import Title from "../../../../components/Title";
-import Input from "../../../../components/Input"
-import InputLabel from "../../../../components/InputLabel";
-import DatePicker from "../../../../components/DatePicker";
-import Dropdown from "../../../../components/Dropdown";
-import DropdownItem from "../../../../components/DropdownItem";
-import Navigation from "../Navigation";
-import SelectDegree from "../../../../components/SelectDegree";
-import THeadAsDiv from "../../../../components/THeadAsDiv";
-import Label from "../../../../components/Label";
-import Table from "../../../../components/Table";
+import PageTitle from '../../../../components/PageTitle';
+import Paper from '../../../../components/Paper';
+import Title from '../../../../components/Title';
+import Input from '../../../../components/Input';
+import InputLabel from '../../../../components/InputLabel';
+import DatePicker from '../../../../components/DatePicker';
+import Dropdown from '../../../../components/Dropdown';
+import DropdownItem from '../../../../components/DropdownItem';
+import Navigation from '../Navigation';
+import SelectDegree from '../../../../components/SelectDegree';
+import THeadAsDiv from '../../../../components/THeadAsDiv';
+import Label from '../../../../components/Label';
+import Table from '../../../../components/Table';
+import Button from '../../../../components/Button';
 import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-} from "../../../../components/Accordion";
-import { Form } from "@unform/web";
-import * as S from "./styles";
+} from '../../../../components/Accordion';
+import { Form } from '@unform/web';
+import * as S from './styles';
 
 const AsessmentInfo = () => {
   return (
@@ -29,20 +30,19 @@ const AsessmentInfo = () => {
       <Navigation />
 
       <S.Grid>
-        <Paper containerStyle={{ flexDirection: "column" }}>
+        <Paper containerStyle={{ flexDirection: 'column' }}>
           <Title>DEFINIÇÕES</Title>
           <S.HStack>
             <Form
               onSubmit={() => {}}
-              style={{ display: "flex", flexDirection: "column" }}
+              style={{ display: 'flex', flexDirection: 'column' }}
             >
-            <div>
-              <InputLabel htmlFor="assessment-name">Defina um nome</InputLabel>
-              <Input
-                name="assessment-name"
-                placeholder="Nome"
-                id="name" />
-            </div>
+              <div>
+                <InputLabel htmlFor="assessment-name">
+                  Defina um nome
+                </InputLabel>
+                <Input name="assessment-name" placeholder="Nome" id="name" />
+              </div>
             </Form>
             <div>
               <InputLabel>Selecione um Tipo</InputLabel>
@@ -51,7 +51,7 @@ const AsessmentInfo = () => {
             </div>
           </S.HStack>
         </Paper>
-        <Paper containerStyle={{ flexDirection: "column" }}>
+        <Paper containerStyle={{ flexDirection: 'column' }}>
           <Title>PERÍODO DE REFERÊNCIA</Title>
           <S.HStack>
             <div>
@@ -72,37 +72,48 @@ const AsessmentInfo = () => {
             </div>
           </S.HStack>
         </Paper>
-        <Paper containerStyle={{ flexDirection: "column" }}>
+        <Paper containerStyle={{ flexDirection: 'column' }}>
           <Title>PARTICIPANTES</Title>
-          <div>
-            <S.HStack style={{ width: "max-content" }}>
-              <div>
-                <InputLabel>Selecione um CNPJ</InputLabel>
-                <Dropdown placeholder="Selecione " fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Filtrar por</InputLabel>
-                <Dropdown placeholder="Selecione filtro" fullRounded={false}>
-                  <DropdownItem>Equipe</DropdownItem>
-                  <DropdownItem>Cargo</DropdownItem>
-                  <DropdownItem>Estrutura</DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Selecione um item</InputLabel>
-                <Dropdown placeholder="Selecione filtro" fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-              <div>
-                <InputLabel>Selecione um detalhamento</InputLabel>
-                <Dropdown placeholder="Selecione det" fullRounded={false}>
-                  <DropdownItem></DropdownItem>
-                </Dropdown>
-              </div>
-            </S.HStack>
+          <div style={{ display: 'flex' }}>
+            <div>
+              <S.HStack style={{ width: 'max-content' }}>
+                <div>
+                  <InputLabel>Selecione um CNPJ</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem></DropdownItem>
+                  </Dropdown>
+                </div>
+                <div>
+                  <InputLabel>Filtrar por</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem>Equipe</DropdownItem>
+                    <DropdownItem>Cargo</DropdownItem>
+                    <DropdownItem>Estrutura</DropdownItem>
+                  </Dropdown>
+                </div>
+                <div>
+                  <InputLabel>Detalhamento</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem></DropdownItem>
+                  </Dropdown>
+                </div>
+                <div>
+                  <InputLabel>Incluir hierarquia?</InputLabel>
+                  <Dropdown placeholder="Selecionar" fullRounded={false}>
+                    <DropdownItem></DropdownItem>
+                  </Dropdown>
+                </div>
+              </S.HStack>
+            </div>
+            <Button
+              containerStyle={{
+                marginLeft: 'auto',
+                marginTop: 'auto',
+              }}
+              width="15rem"
+            >
+              ADICIONAR
+            </Button>
           </div>
 
           <S.MembersTable>
@@ -133,24 +144,24 @@ const AsessmentInfo = () => {
                     </S.SquadInfo>
 
                     <Table
-                      containerStyle={{ width: "100%" }}
+                      containerStyle={{ width: '100%' }}
                       pagination={false}
                       showSelectOptions
                       showToolbar={false}
                       columns={[
-                        { Header: " ", accessor: "avatar" },
-                        { Header: "Nome", accessor: "nome" },
-                        { Header: "Função", accessor: "funcao" },
-                        { Header: "Situação", accessor: "status" },
+                        { Header: ' ', accessor: 'avatar' },
+                        { Header: 'Nome', accessor: 'nome' },
+                        { Header: 'Função', accessor: 'funcao' },
+                        { Header: 'Situação', accessor: 'status' },
                       ]}
                       tableData={[
                         {
                           avatar: (
                             <Avatar src="/static/media/user-placeholder.a5f6eeaf.svg" />
                           ),
-                          nome: "Consectetur smith",
-                          funcao: "Business owner",
-                          status: "Ativo",
+                          nome: 'Consectetur smith',
+                          funcao: 'Business owner',
+                          status: 'Ativo',
                         },
                       ]}
                     />
