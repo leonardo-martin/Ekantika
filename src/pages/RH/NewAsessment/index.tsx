@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Container } from "../AssessmentCenter/styles";
 import AsessmentInfo from "./Info";
 import CuturalFitElements from "./CuturalFitElements";
+import GradeComposition from "./GradeComposition";
+import StepsDuration from "./StepsDuration";
 
 const StepComponent = () => {
   const { step } = useParams<{ step: string }>();
@@ -13,6 +15,10 @@ const StepComponent = () => {
       return <AsessmentInfo />;
     case "2":
       return <CuturalFitElements />;
+    case "5":
+      return <GradeComposition />;
+    case "6":
+      return <StepsDuration />
   }
 };
 
