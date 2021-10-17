@@ -1,8 +1,21 @@
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
-import { ReactComponent as MinusIcon } from "../../../../assets/icons/minus.svg";
-import { ReactComponent as PlusIcon } from "../../../../assets/icons/plus.svg";
+export const Grid1 = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  gap: 3.2rem;
+
+  > *:nth-child(1) {
+    grid-column: 1 / -2;
+  }
+
+  > *:nth-child(2) {
+    grid-column: 1 / -4;
+  }
+`;
+
 
 export const Container = styled.div`
   width: 100%;
@@ -25,47 +38,14 @@ export const Text = styled.div`
   color: #4f6872;
 `;
 
-export const PercentageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin: 1.5rem 0;
-`;
-
-export const ReduceControl = styled.button`
-  border: none;
-  background: transparent;
-`;
-
-export const IncreaseControl = styled.button`
-  border: none;
-  background: transparent;
-`;
-
-export const ReduceIcon = styled(MinusIcon)`
-  border-radius: 50%;
-  margin-right: 0.8rem;
-`;
-
-export const IncreaseIcon = styled(PlusIcon)`
-  border-radius: 50%;
-  margin-left: 0.8rem;
-`;
-
-export const MinMaxContainer = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: 1.5rem;
-`;
-
 export const EvaluatorsGrid = styled(Grid)`
   display: flex;
-  align-items: center;
-  text-align: center;
   flex-direction: column;
-  padding: 2rem 4rem !important;
   justify-content: space-between;
+
+  > * {
+    margin-top: 1.8rem;
+  }
 
   & + div {
     border-left: 1px solid #ddd7e5;
