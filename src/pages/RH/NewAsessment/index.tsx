@@ -6,6 +6,7 @@ import CuturalFitElements from "./CuturalFitElements";
 import GradeComposition from "./GradeComposition";
 import StepsDuration from "./StepsDuration";
 import Messages from "./Messages";
+import Review from "./Review";
 
 const StepComponent = () => {
   const { step } = useParams<{ step: string }>();
@@ -22,6 +23,8 @@ const StepComponent = () => {
       return <StepsDuration />
     case "7":
       return <Messages />
+    case "8":
+      return <Review />
   }
 };
 
